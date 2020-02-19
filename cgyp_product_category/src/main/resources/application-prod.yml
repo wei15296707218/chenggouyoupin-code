@@ -1,0 +1,90 @@
+  #eureka服务端的地址
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+server:
+  port: 8081
+  servlet:
+    context-path: /
+limit:
+  minMoney: 1
+  maxMoney: 10
+  desc: 最低${limit.minMoney}最高${limit.maxMoney}
+spring:
+  application:
+    name: product
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.jdbc.Driver
+      #url: jdbc:mysql://121.36.11.232:3306/shopping
+      url: jdbc:mysql://121.36.13.233:3306/shopping?characterEncoding=utf8&useSSL=false
+      #username: ssw
+      username: root
+      #password: 'Wei501913133.'
+      password: '@quwosulileiTMD521'
+      max-active: 20
+      max-wait: 6000
+      min-idle: 1
+      test-on-borrow: true
+      test-on-return: true
+  http:
+    encoding:
+      force: true
+      enabled: true
+      charset: UTF-8
+  #新加redis测试session一致
+  redis:
+      host: 101.37.78.184
+      port: 5379
+      password: Hyc5670526
+      timeout: 6000
+      lettuce:
+        pool:
+          max-active: 20 #最大连接数
+          max-wait: -1ms #等待时间
+          max-idle: 20 #最大空余数
+          min-idle: 0 #最小空余数
+        database: 0
+  thymeleaf:
+    mode: HTML
+  mvc:
+    static-path-pattern: /static/**
+#  resources:
+#    static-locations: file:D:/upload
+mybatis:
+  mapper-locations: classpath*:com/ssw/mapper/*Mapper.xml
+  config-location: classpath:mybatis-config.xml
+
+
+business:
+  #imageHost: http://121.36.11.232/img/
+  imageHost: http://localhost/
+  productInsertPrimaryKey: 'product:insertPrimKey'
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: countSql
+logging:
+  level:
+    com.ssw.dao: debug
+
+##配置redis连接池的参数
+redis:
+  max:
+    total: 8
+    idle: 8
+  min:
+    idle: 2
+  test:
+    borrow: true
+    return: true
+  ip: 121.36.11.232
+  port: 5379
+  password: Wei501913133.
+  timeout: 2000
+
+  ###服务器上需要修改的:1.port:5379  2.bind 0.0.0.0  3.requirepass  Wei501913133.

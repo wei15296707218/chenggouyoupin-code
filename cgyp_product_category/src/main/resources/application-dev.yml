@@ -1,0 +1,86 @@
+  #eureka服务端的地址
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+server:
+  port: 8081
+  servlet:
+    context-path: /
+limit:
+  minMoney: 1
+  maxMoney: 10
+  desc: 最低${limit.minMoney}最高${limit.maxMoney}
+spring:
+  application:
+    name: product
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.jdbc.Driver
+      #url: jdbc:mysql://localhost:3307/business
+      url: jdbc:mysql://121.36.13.233:3306/shopping?characterEncoding=utf8&useSSL=false
+      username: root
+      #password: 123456
+      password: '@quwosulileiTMD521'
+      max-active: 20
+      max-wait: 6000
+      min-idle: 1
+      test-on-borrow: true
+      test-on-return: true
+http:
+    encoding:
+      force: true
+      enabled: true
+      charset: UTF-8
+thymeleaf:
+    mode: HTML
+mvc:
+    static-path-pattern: /static/**
+resources:
+    static-locations: file:D:/upload
+mybatis:
+  mapper-locations: classpath*:com/ssw/mapper/*Mapper.xml
+  config-location: classpath:mybatis-config.xml
+
+
+business:
+  imageHost: http://localhost:8081/static/
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: countSql
+  close-conn:
+logging:
+  level:
+    com.ssw.dao: debug
+
+###配置redis连接池的参数
+redis:
+  max:
+    total: 8
+    idle: 8
+  min:
+    idle: 2
+  test:
+    borrow: true
+    return: true
+  ip: 121.36.11.232
+  port: 5379
+  password: Wei501913133.
+  timeout: 2000
+
+  ###服务器上需要修改的:1.port:5379  2.bind 0.0.0.0  3.requirepass  Wei501913133.
+
+###配置订单超时时间
+#order:
+#  close:
+#    timeout: 2
+
+
+
+
+
